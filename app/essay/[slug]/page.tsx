@@ -58,12 +58,9 @@ interface PageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function RomanticismEssay({
-  params,
-  searchParams,
-}: PageProps) {
+export default async function RomanticismEssay({ params, searchParams }) {
   const { slug } = await params;
-  const search = await searchParams;
+  // const search = await searchParams;
   const essay = records.find((record) => record.essay === `/essay/${slug}`);
 
   if (!essay) {
