@@ -51,11 +51,14 @@ interface EssayProps {
   next: string;
 }
 
-export default function RomanticismEssay({
-  params,
-}: {
-  params: { slug: string };
-}) {
+interface PageProps {
+  params: {
+    slug: string;
+  };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+export default function RomanticismEssay({ params }: PageProps) {
   const { slug } = params;
   const essay = records.find((record) => record.essay === `/essay/${slug}`);
 
