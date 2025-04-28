@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  a {
+    @apply text-[rgb(168,79,0)] hover:underline hover:underline-offset-4 hover:decoration-[0.05rem];
+  }
+}
