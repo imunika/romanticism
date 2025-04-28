@@ -52,14 +52,14 @@ interface EssayProps {
 }
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
   searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-export default function RomanticismEssay({ params }: PageProps) {
-  const { slug } = params;
+export default async function RomanticismEssay({ params }: PageProps) {
+  const { slug } = await params;
   const essay = records.find((record) => record.essay === `/essay/${slug}`);
 
   if (!essay) {
