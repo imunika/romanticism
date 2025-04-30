@@ -9,6 +9,17 @@ import {
 } from "./fonts";
 import "./globals.css";
 
+export const metadata = {
+  title: {
+    default: "Romanticism at SU",
+    template: "%s | Romanticism at SU",
+  },
+  description: "A comprehensive exploration of Romantic art and literature",
+  icons: {
+    icon: "/images/favicon.ico",
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html

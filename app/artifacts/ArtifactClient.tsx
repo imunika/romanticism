@@ -1,12 +1,14 @@
 "use client";
-import artworks from "/app/artworks.json";
-import ImageGallery from "/app/components/ImageGallery";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
+import ImageGallery from "../components/ImageGallery";
+import type { Artwork } from "./[slug]/types";
 
-export default function ShowArtifact({ params }) {
-  const slug = use(params).slug; // Unwrap the params Promise
-  const artwork = artworks.find((item) => item.slug === slug);
-  const [isMobile, setIsMobile] = useState(false);
+interface ArtifactClientProps {
+  artwork: Artwork;
+}
+
+export default function ArtifactClient({ artwork }: ArtifactClientProps) {
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -15,13 +17,8 @@ export default function ShowArtifact({ params }) {
 
     checkMobile();
     window.addEventListener("resize", checkMobile);
-
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
-
-  if (!artwork) {
-    return <div>Artwork not found</div>;
-  }
 
   return (
     <div className="relative">
@@ -81,9 +78,7 @@ export default function ShowArtifact({ params }) {
             <div className="text-slate-700 font-light leading-6 md:leading-7">
               <h2
                 className="text-3xl lg:text-4xl font-light mb-6"
-                dangerouslySetInnerHTML={{
-                  __html: artwork.title,
-                }}
+                dangerouslySetInnerHTML={{ __html: artwork.title }}
               />
             </div>
             <div className="overflow-x-auto">
@@ -109,9 +104,7 @@ export default function ShowArtifact({ params }) {
               <hr className="h-px my-2 bg-gray-300 border-0 dark:bg-gray-700"></hr>
               <div
                 className="text-sm md:text-base"
-                dangerouslySetInnerHTML={{
-                  __html: artwork.Description,
-                }}
+                dangerouslySetInnerHTML={{ __html: artwork.Description }}
               />
             </div>
 

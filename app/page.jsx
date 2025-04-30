@@ -1,5 +1,6 @@
 import artworks from "/app/artworks.json";
 import Card from "./components/Card";
+import Head from "next/head";
 
 export default function HomePage({ params }) {
   // Add error handling for params and slug
@@ -12,8 +13,8 @@ export default function HomePage({ params }) {
         </p>
 
         <div className="grid grid-cols-8 bg-[rgba(145,101,34,0.07)] mb-6 p-8">
-          <div className="col-span-1"></div>
-          <div className="mb-6 col-span-6">
+          <div className="col-span-1 xl:col-span-2"></div>
+          <div className="mb-6 col-span-6 xl:col-span-4">
             <p className="text-sm xl:text-base xl:leading-8 text-justify text-slate-700 font-light leading-7">
               <i>Romanticism at SU</i> emerged from a Spring 2019 course on the
               Art of Romanticism (HOA 458) taught at
@@ -55,7 +56,7 @@ export default function HomePage({ params }) {
               time.
             </p>
           </div>
-          <div></div>
+          <div className="xl:col-span-2"></div>
         </div>
 
         <div className="grid grid-cols-8 pb-6">
@@ -98,8 +99,8 @@ export default function HomePage({ params }) {
       </p>
 
       <div className="grid grid-cols-8 bg-[rgba(145,101,34,0.07)] mb-6 p-8">
-        <div></div>
-        <div className="mb-6 md:col-span-6 col-span-8">
+        <div className="col-span-1 lg:col-span-2"></div>
+        <div className="mb-6 md:col-span-6 col-span-8 lg:col-span-4">
           <p className="text-sm xl:text-base xl:leading-8 text-justify text-slate-700 font-light leading-7">
             <i>Romanticism at SU</i> emerged from a Spring 2019 course on the
             Art of Romanticism (HOA 458) taught at
@@ -138,7 +139,7 @@ export default function HomePage({ params }) {
             time.
           </p>
         </div>
-        <div></div>
+        <div className="lg:col-span-2"></div>
       </div>
 
       <div className="grid grid-cols-8 pb-6">

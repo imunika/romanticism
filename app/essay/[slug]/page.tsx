@@ -1,6 +1,7 @@
 import SocialIcons from "./../../components/Socialicons";
 import Link from "next/link";
 import records from "./../../records.json";
+import { Metadata } from "next";
 // Import all essay components
 import AmericanCrowEssay from "./../../essays/the-glorious-american-crow/page";
 import ArchConstantineEssay from "../../essays/romance-under-the-arch-of-constantine/page";
@@ -56,6 +57,15 @@ interface PageProps {
     slug: string;
   }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const { slug } = params;
+  const essay = records.find((record) => record.essay === `/essay/${slug}`);
+
+  return {
+    title: essay?.title_essay || "Essay",
+  };
 }
 
 export default async function RomanticismEssay({ params, searchParams }) {

@@ -1,5 +1,10 @@
 import Heading from "../components/Heading";
 
+export const metadata = {
+  title: "About",
+  description: "Learn about this project exploring Romantic art and literature",
+};
+
 export default function AboutPage() {
   return (
     <>
