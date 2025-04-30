@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import ImageGallery from "../components/ImageGallery";
-import type { Artwork } from "./[slug]/types";
+import type { Artwork } from "./types";
 
 interface ArtifactClientProps {
   artwork: Artwork;
