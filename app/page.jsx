@@ -59,7 +59,7 @@ export default function HomePage({ params }) {
           <div className="xl:col-span-2"></div>
         </div>
 
-        <div className="grid grid-cols-8 pb-6">
+        <div className="grid grid-cols-8 pb-6 max-w-[1700px] mx-auto">
           <div></div>
           <div className="col-span-6 bg-[#fafafa] border grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 p-8">
             {artworks.map((artwork) => (

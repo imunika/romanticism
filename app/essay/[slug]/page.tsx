@@ -94,7 +94,7 @@ export default async function RomanticismEssay({ params, searchParams }) {
       >
         <div className="grid grid-cols-8 mx-6 pb-32">
           <div></div>
-          <div className="bg-white shadow-xl mt-32 mb-10 md:col-span-6 col-span-8 relative z-10">
+          <div className="bg-white shadow-xl mt-32 mb-10 md:col-span-6 col-span-8 relative z-10 max-w-[1500px] mx-auto">
             <div className="flex justify-end">
               <SocialIcons />
             </div>
@@ -116,7 +116,7 @@ export default async function RomanticismEssay({ params, searchParams }) {
         </div>
 
         <div className="absolute pt-36 bg-[rgba(248,244,240,255)] grid grid-cols-8 bottom-0 left-0 right-0 z-0">
-          <div className="my-10 mx-6 col-span-8">
+          <div className="my-10 mx-6 col-span-8 ">
             <div className="flex justify-between gap-4 mx-10 lg:mx-40 xl:mx-60">
               {/* Navigation container with fixed widths */}
               <div className="text-left text-orange-800 w-[45%]">
