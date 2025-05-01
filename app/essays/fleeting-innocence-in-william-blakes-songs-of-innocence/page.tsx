@@ -83,7 +83,7 @@ export default function SongsOfInnocenceEssay() {
           </svg>
 
           <div className="lg:ml-12 pt-12 lg:pt-0 relative z-10">
-            <div className="text-center text-slate-700 text-sm dark:text-white">
+            <div className="text-center text-slate-700 text-sm">
               <p>“Pipe a song about a Lamb!”</p>
               <p>So I piped with merry chear.</p>
               <p>“Piper, pipe that song again”</p>
@@ -148,7 +148,7 @@ export default function SongsOfInnocenceEssay() {
           </svg>
 
           <div className="lg:ml-12 pt-12 lg:pt-0 relative z-10">
-            <p className="text-slate-700 text-sm dark:text-white">
+            <p className="text-slate-700 text-sm">
               Man is related to nature and environment in every moment of his
               life from birth, during his life and even at the moment of death.
               Even though nature has been forgotten and destroyed by man because

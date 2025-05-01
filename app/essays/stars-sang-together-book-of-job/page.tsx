@@ -17,7 +17,7 @@ export default function MorningStarsEssay() {
           </svg>
 
           <div className="lg:ml-12 pt-12 lg:pt-0 relative z-10">
-            <div className="text-center text-slate-700 text-sm dark:text-white">
+            <div className="text-center text-slate-700 text-sm">
               <p>‘Re-engraved time after time</p>
               <p>Ever in their youthful prime;</p>
               <p>My designs unchanged remain;</p>
@@ -235,7 +235,7 @@ export default function MorningStarsEssay() {
           </svg>
 
           <div className="lg:ml-12 pt-12 lg:pt-0 relative z-10">
-            <div className="text-center text-slate-700 text-sm dark:text-white">
+            <div className="text-center text-slate-700 text-sm">
               <p>“…a world in a grain of sand,</p>
               <p>And a heaven in a wild flower,</p>
               <p>Hold infinity in the palm of your hand.</p>

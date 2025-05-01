@@ -141,7 +141,7 @@ export default function ChocoruasCurseEssay() {
           </svg>
 
           <div className="lg:ml-12 pt-12 lg:pt-0 relative z-10">
-            <p className="text-slate-700 text-sm dark:text-white">
+            <p className="text-slate-700 text-sm">
               We set out to climb Chocorua peak... On the path through the wood,
               we came to windfalls, the track of the tornado, where every tree
               is laid prostrate. We came out, at length, to a lonely and
