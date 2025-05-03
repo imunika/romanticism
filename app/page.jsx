@@ -11,7 +11,7 @@ function SearchHandler({ onSearch }) {
 
   // Get search query from URL parameters
   useEffect(() => {
-    const urlQuery = searchParams.get("q") || "";
+    const urlQuery = searchParams?.get("q") || "";
     onSearch(urlQuery);
   }, [searchParams, onSearch]);
 
@@ -22,7 +22,7 @@ export default function HomePage({ params }) {
   const [query, setQuery] = useState("");
 
   const handleSearch = (urlQuery) => {
-    setQuery(urlQuery);
+    setQuery(urlQuery || "");
   };
 
   const fuse = new Fuse(artworks, {
@@ -30,10 +30,12 @@ export default function HomePage({ params }) {
     keys: ["title", "Details.Artist", "Description", "Essay", "author_essay"],
   });
 
-  const results = fuse.search(query);
-  const artworksResults = query
-    ? results.map((result) => result.item)
-    : artworks;
+  // Add safeguards against undefined results
+  const results = query ? fuse.search(query) : [];
+  const artworksResults =
+    query && results?.length > 0
+      ? results.map((result) => result.item)
+      : artworks;
 
   // Add error handling for params and slug
   if (!params || !params.slug) {
@@ -96,15 +98,16 @@ export default function HomePage({ params }) {
         <div className="grid grid-cols-8 pb-6 max-w-[1700px] mx-auto">
           <div></div>
           <div className="col-span-6 bg-[#fafafa] border grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 p-8">
-            {artworksResults.map((artwork) => (
-              <Card
-                key={artwork.slug}
-                title={artwork.title}
-                artist={artwork.Details.Artist}
-                image={artwork.card_img}
-                slug={artwork.slug}
-              />
-            ))}
+            {artworksResults &&
+              artworksResults.map((artwork) => (
+                <Card
+                  key={artwork?.slug || ""}
+                  title={artwork?.title || ""}
+                  artist={artwork?.Details?.Artist || ""}
+                  image={artwork?.card_img || ""}
+                  slug={artwork?.slug || ""}
+                />
+              ))}
           </div>
           <div></div>
         </div>
@@ -180,10 +183,10 @@ export default function HomePage({ params }) {
         <div></div>
         <div className="col-span-6 bg-[#fafafa] border grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 p-8">
           <Card
-            title={artwork.title}
-            artist={artwork.Details.Artist}
-            image={artwork.card_img}
-            slug={artwork.slug}
+            title={artwork?.title || ""}
+            artist={artwork?.Details?.Artist || ""}
+            image={artwork?.card_img || ""}
+            slug={artwork?.slug || ""}
           />
         </div>
         <div className="col-span-1"></div>
