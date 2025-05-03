@@ -1,17 +1,52 @@
+"use client";
 import artworks from "/app/artworks.json";
 import Card from "./components/Card";
-import Head from "next/head";
+import Fuse from "fuse.js";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+
+// Component that handles search functionality
+function SearchHandler({ onSearch }) {
+  const searchParams = useSearchParams();
+
+  // Get search query from URL parameters
+  useEffect(() => {
+    const urlQuery = searchParams.get("q") || "";
+    onSearch(urlQuery);
+  }, [searchParams, onSearch]);
+
+  return null;
+}
 
 export default function HomePage({ params }) {
+  const [query, setQuery] = useState("");
+
+  const handleSearch = (urlQuery) => {
+    setQuery(urlQuery);
+  };
+
+  const fuse = new Fuse(artworks, {
+    includeScore: true,
+    keys: ["title", "Details.Artist", "Description", "Essay", "author_essay"],
+  });
+
+  const results = fuse.search(query);
+  const artworksResults = query
+    ? results.map((result) => result.item)
+    : artworks;
+
   // Add error handling for params and slug
   if (!params || !params.slug) {
-    // If no slug is provided, you might want to show all artworks instead
+    // If no slug is provided, show all artworks or filtered by search
     return (
       <>
+        <Suspense fallback={null}>
+          <SearchHandler onSearch={handleSearch} />
+        </Suspense>
+
         <p className="m-4 p-8 font-italiana font-extralight text-center text-5xl md:text-6xl lg:text-7xl mb-4 tracking-wide">
           <i>Romanticism at Syracuse University</i>
         </p>
-
         <div className="grid grid-cols-8 bg-[rgba(145,101,34,0.07)] mb-6 p-8">
           <div className="col-span-1 xl:col-span-2"></div>
           <div className="mb-6 col-span-6 xl:col-span-4">
@@ -58,11 +93,10 @@ export default function HomePage({ params }) {
           </div>
           <div className="xl:col-span-2"></div>
         </div>
-
         <div className="grid grid-cols-8 pb-6 max-w-[1700px] mx-auto">
           <div></div>
           <div className="col-span-6 bg-[#fafafa] border grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 p-8">
-            {artworks.map((artwork) => (
+            {artworksResults.map((artwork) => (
               <Card
                 key={artwork.slug}
                 title={artwork.title}
@@ -145,7 +179,7 @@ export default function HomePage({ params }) {
       <div className="grid grid-cols-8 pb-6">
         <div></div>
         <div className="col-span-6 bg-[#fafafa] border grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 p-8">
-          <Card2
+          <Card
             title={artwork.title}
             artist={artwork.Details.Artist}
             image={artwork.card_img}
